@@ -5,3 +5,6 @@
 # AIP Homework 2: Gaussian model fitting
 > 1. Optimization method (fminsearch function)
 > 2. Estimation Maximum 
+# AIP Homework 3: Bias Field correction 
+> 1, First fit the Gaussian model to figure out the paramters
+> 2, Then solve the least square 
