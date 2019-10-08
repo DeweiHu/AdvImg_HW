@@ -1,6 +1,5 @@
 clc, clear, close all
 
-
 button = 'y';
 
 while button == 'y' || button == 'Y'
@@ -24,7 +23,7 @@ end
 function b_field = bf_correction(ima_att,param)
 
 % Pre-process the input image and params
-ipt_img = ima_att;
+ipt_img = double(ima_att);
 mu = [param(1),param(4)];
 sigma = [param(2),param(5)];
 prior = [param(3),param(6)];
@@ -33,7 +32,7 @@ prior = [param(3),param(6)];
 [cnt,loc] = imhist(uint8(ipt_img)); 
 figure(1)
 subplot(2,2,1),plot(loc,cnt/sum(cnt),'LineWidth',2),title('Original Distribution')
-subplot(2,2,2),surf(ipt_img),title('Original Image 3D surf')
+subplot(2,2,2),mesh(ipt_img),title('Original Image 3D surf')
 subplot(2,2,3),imshow(ind2rgb(uint8(ipt_img),jet)),title('Original image')
 pause(2)
 close
@@ -43,7 +42,7 @@ subplot(1,2,1),imshow(ind2rgb(uint8(ipt_img),jet)),title('input')
 
 C_Total = zeros(6,1);
 
-it = 5;
+it = 10;
 while it>0 
     ipt = uint8(ipt_img);    
     % Find the theta by optimization
@@ -87,9 +86,9 @@ while it>0
     opt_img = reshape(opt_vec,[256,256]);
     opt = uint8(opt_img);
 
-    subplot(1,2,2),imshow(ind2rgb(opt,jet)),title('output of 5 iterations')
+    subplot(1,2,2),imshow(ind2rgb(opt,jet)),title('output of 10 iterations')
     drawnow
-    pause(1)
+    pause(.4)
     
     % Update the image and the Total C
     C_Total = C_Total+C;
@@ -129,7 +128,7 @@ subplot(2,2,1),plot(loc,cnt/sum(cnt),'LineWidth',2)
 hold on
 plot(x,y,'r','LineWidth',2);title('Original and Updated Distribution')
 hold off
-subplot(2,2,2),surf(b_field),colormap hsv;title('Bias Field')
+subplot(2,2,2),mesh(b_field),colormap hsv;title('Bias Field')
 subplot(2,2,3),imshow(ind2rgb(uint8(ima_att),jet));title('Original Image')
 subplot(2,2,4),imshow(ind2rgb(opt,jet));title('Image After Correction')
 
