@@ -8,3 +8,7 @@
 # AIP Homework 3: Bias Field correction 
 > 1, First fit the Gaussian model to figure out the paramters
 > 2, Then solve the least square 
+# AIP Homework 4: Active Contour Edge Detection
+> 1, Normal image gradient w/wo balloon force
+> 2, Distance map 
+> 3, Gradient vector flow
