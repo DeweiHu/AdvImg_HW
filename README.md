@@ -12,3 +12,6 @@
 > 1, Normal image gradient w/wo balloon force
 > 2, Distance map 
 > 3, Gradient vector flow
+# AIP Homework 5: Rigid Registration
+> 1, Distance map method
+> 2. Iterative closest points
