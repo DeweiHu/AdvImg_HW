@@ -1,11 +1,12 @@
 %clc,clear,close all
 
-%load testhw5_6.mat
+%load testhw5_4.mat
 
 %% Visualize the Initial State
-global sample, global num
+global sample, global num, global l_num
 sample = [pointx;pointy];
 num = max(size(pointx));
+l_num = max(size(xc))-1;
 
 I = zeros(256,256);
 area = double(roipoly(I,xc,yc));
@@ -55,14 +56,14 @@ function [R,t] = Register(X,Y)
 end
 
 function Y = Link(pointx,pointy,xc,yc)
-    global num
+    global num, global l_num
     Y = zeros(2,num);
     % Find the pseudo-corresponding point for each sample points
     for k = 1:num
         p = [pointx(k);pointy(k)];
-        y = zeros(2,5);
+        y = zeros(2,l_num);
         % Compute the distance of the point to each line element
-        for l = 1:5
+        for l = 1:l_num
             X1 = [xc(l);yc(l)];
             X2 = [xc(l+1);yc(l+1)];
             nm = (p(1)-X1(1))*(X2(1)-X1(1))+(p(2)-X1(2))*(X2(2)-X1(2));
@@ -76,8 +77,8 @@ function Y = Link(pointx,pointy,xc,yc)
                 y(:,l) = X1+u*(X2-X1);
             end
         end
-        % Find the minimum distance among these 5 distances
-        for i = 1:5
+        % Find the minimum distance among these l_num distances
+        for i = 1:l_num
             dist = sum((y-p).^2,1);
             idx = find(dist==min(dist));
             Y(:,k) = y(:,idx(1));
