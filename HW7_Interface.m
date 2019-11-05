@@ -9,9 +9,9 @@ while button == 'y' || button == 'Y'
     load(dir);
     
     if method == 1
-        run('/home/dewei/Desktop/HW2019F/AdvImg_HW/HW7_Polynomial.m')
+        run('/home/dewei/Desktop/HW2019F/AdvImg_HW/HW7_Polynomial_backinter.m')
     else
-        run('/home/dewei/Desktop/HW2019F/AdvImg_HW/HW7_TPS.m')
+        run('/home/dewei/Desktop/HW2019F/AdvImg_HW/HW7_TPS_backinter.m')
     end
     
     prompt = 'Do you want to try more?[y/n]:\n';
