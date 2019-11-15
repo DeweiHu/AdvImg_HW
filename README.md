@@ -22,3 +22,10 @@
 
 # AIP Homework 6: Rigid Registration 2
 > 1. Joint Histogram and Mutual Information
+
+# AIP Homework 7: Deformable Registration 1
+> 1. Polynomial
+> 2. Thin Plate Spline
+
+# AIP Homework 8: Deformable Registration 2
+> 1. Optical flow baced Demon
